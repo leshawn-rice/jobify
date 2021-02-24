@@ -1,3 +1,4 @@
+const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const { SECRET_KEY } = require("../config");
 const { UnauthorizedError } = require("../expressErrors");
@@ -12,10 +13,10 @@ const { UnauthorizedError } = require("../expressErrors");
 
 function authenticateJWT(req, res, next) {
   try {
-    const authHeader = req.headers && req.headers.authorization;
-    if (authHeader) {
-      const token = authHeader.replace(/^[Bb]earer /, "").trim();
-      res.locals.user = jwt.verify(token, SECRET_KEY);
+    if (!req.session.user) {
+      req.session.user = {}
+    }
+    else {
     }
     return next();
   } catch (err) {

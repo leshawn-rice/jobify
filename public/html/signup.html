@@ -24,14 +24,23 @@
                     <input class="form-control" type="text" name="username" id="username" />
                 </div>
 
+
                 <div class="form-group text-center my-2">
                     <label class="form-label text-light lead" for="password">Password</label>
-                    <input class="form-control" type="password" name="password" id="password" />
+                    <div class="input-group">
+                        <input class="form-control" type="password" name="password" id="password" />
+                        <span class="input-group-text btn btn-secondary" id="password-toggle"><i class="fa fa-eye-slash"
+                                aria-hidden="true"></i></span>
+                    </div>
                 </div>
 
                 <div class="form-group text-center my-2">
                     <label class="form-label text-light lead" for="conf-password">Confirm Password</label>
-                    <input class="form-control" type="password" name="conf-password" id="conf-password" />
+                    <div class="input-group">
+                        <input class="form-control" type="password" name="confirm-password" id="confirm-password" />
+                        <span class="input-group-text btn btn-secondary" id="confirm-password-toggle"><i
+                                class="fa fa-eye-slash" aria-hidden="true"></i></span>
+                    </div>
                 </div>
 
                 <div class="form-group text-center d-grid gap-2">
@@ -43,4 +52,8 @@
 </div>
 
 
+{% endblock %}
+
+{% block scripts %}
+<script src="../js/password-toggle.js"></script>
 {% endblock %}

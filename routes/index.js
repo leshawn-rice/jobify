@@ -2,6 +2,7 @@ const express = require('express');
 const router = new express.Router()
 
 const { authenticateJWT, ensureLoggedIn } = require('../middleware/auth');
+const { SECRET_KEY } = require('../config');
 
 router.get('/', (req, res, next) => {
   try {
@@ -14,7 +15,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/login', (req, res, next) => {
   try {
-    return res.render('login.html', { user: res.locals.user })
+    return res.render('login.html');
   }
   catch (err) {
     return next(err);
@@ -24,8 +25,9 @@ router.get('/login', (req, res, next) => {
 router.post('/login', (req, res, next) => {
   try {
     const { username, password } = req.body;
-    res.locals.user = { username, password }
-    return res.render('login.html', { user: res.locals.user });
+    req.session.user.username = username;
+    console.log(req.session.user);
+    return res.render('login.html');
   }
   catch (err) {
     return next(err);
