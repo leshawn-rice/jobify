@@ -1,5 +1,5 @@
 body {
-  background-image: url('../img/criss-cross.png');
+  background-image: url('../img/repeated-square-dark.png');
 }
 
 .nav-item.active {
@@ -8,11 +8,8 @@ body {
 }
 
 .main-content {
-  /* margin-top: 20px;
-  margin-bottom: 20px; */
   height: 100vh;
-  /* border-radius: 0.5rem; */
-  background-image: url('../img/repeated-square-dark.png');
+  background-image: url('../img/criss-cross.png');
 }
 
 #password-toggle {

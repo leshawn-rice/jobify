@@ -9,24 +9,24 @@
 <div class="container">
 
     {% if user %}
-    <h1 class="text-light">Logged In!</h1>
+    <h1 class="text-dark">Logged In!</h1>
     {% endif %}
 
     <div class="row">
         <div class="col-12 d-flex justify-content-center my-5">
-            <h1 class="display-2 text-light">Sign Up!</h1>
+            <h1 class="display-2 text-dark">Sign Up!</h1>
         </div>
         <div class="col-12 d-flex justify-content-center">
 
             <form action="/login" method="POST">
                 <div class="form-group text-center my-2">
-                    <label class="form-label text-light lead" for="username">Username</label>
+                    <label class="form-label text-dark lead" for="username">Username</label>
                     <input class="form-control" type="text" name="username" id="username" />
                 </div>
 
 
                 <div class="form-group text-center my-2">
-                    <label class="form-label text-light lead" for="password">Password</label>
+                    <label class="form-label text-dark lead" for="password">Password</label>
                     <div class="input-group">
                         <input class="form-control" type="password" name="password" id="password" />
                         <span class="input-group-text btn btn-secondary" id="password-toggle"><i class="fa fa-eye-slash"
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="form-group text-center my-2">
-                    <label class="form-label text-light lead" for="conf-password">Confirm Password</label>
+                    <label class="form-label text-dark lead" for="conf-password">Confirm Password</label>
                     <div class="input-group">
                         <input class="form-control" type="password" name="confirm-password" id="confirm-password" />
                         <span class="input-group-text btn btn-secondary" id="confirm-password-toggle"><i
