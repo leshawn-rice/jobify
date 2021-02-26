@@ -1,22 +1,16 @@
-const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
-const { SECRET_KEY } = require("../config");
 const { UnauthorizedError } = require("../expressErrors");
 
-/** Middleware: Authenticate user.
+/** Middleware: Check Session.
  *
- * If a token was provided, verify it, and, if valid, store the token payload
- * on res.locals (this will include the username and isAdmin field.)
+ * If the session does not contain a user object, create an object named user
+ * on the session.
  *
- * It's not an error if no token was provided or if the token is not valid.
  */
 
-function authenticateJWT(req, res, next) {
+function checkSession(req, res, next) {
   try {
     if (!req.session.user) {
       req.session.user = {}
-    }
-    else {
     }
     return next();
   } catch (err) {
@@ -39,6 +33,6 @@ function ensureLoggedIn(req, res, next) {
 }
 
 module.exports = {
-  authenticateJWT,
+  checkSession,
   ensureLoggedIn
 };

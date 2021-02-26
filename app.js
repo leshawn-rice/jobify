@@ -11,7 +11,7 @@ const { SECRET_KEY } = require('./config');
 
 // Middleware & Errors
 const { NotFoundError } = require("./expressErrors");
-const { authenticateJWT } = require("./middleware/auth");
+const { checkSession } = require("./middleware/auth");
 
 // Routes
 const indexRoutes = require('./routes/index');
@@ -28,7 +28,7 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
-app.use(authenticateJWT);
+app.use(checkSession);
 
 app.use('/', indexRoutes);
 

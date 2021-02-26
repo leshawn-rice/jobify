@@ -1,9 +1,12 @@
+// External Dependencies
 const express = require('express');
 const router = new express.Router();
+
+// Internal Dependencies
 const render = require('../helpers/render');
 
-const { authenticateJWT, ensureLoggedIn } = require('../middleware/auth');
-const { SECRET_KEY } = require('../config');
+// Middleware
+const { ensureLoggedIn } = require('../middleware/auth');
 
 router.get('/', (req, res, next) => {
   try {
@@ -16,6 +19,9 @@ router.get('/', (req, res, next) => {
 
 router.get('/login', (req, res, next) => {
   try {
+    if (req.session.user.username) {
+      return render(req, res, 'index.html');
+    }
     return render(req, res, 'login.html');
   }
   catch (err) {
@@ -27,7 +33,7 @@ router.post('/login', (req, res, next) => {
   try {
     const { username, password } = req.body;
     req.session.user.username = username;
-    return render(req, res, 'index.html');
+    return res.redirect('/');
   }
   catch (err) {
     return next(err);
@@ -36,6 +42,9 @@ router.post('/login', (req, res, next) => {
 
 router.get('/signup', (req, res, next) => {
   try {
+    if (req.session.user.username) {
+      return render(req, res, 'index.html');
+    }
     return render(req, res, 'signup.html');
   }
   catch (err) {
@@ -47,7 +56,17 @@ router.post('/signup', (req, res, next) => {
   try {
     const { username, password } = req.body;
     req.session.user.username = username;
-    return render(req, res, 'index.html');
+    return res.redirect('/');
+  }
+  catch (err) {
+    return next(err);
+  }
+});
+
+router.get('/sign-out', (req, res, next) => {
+  try {
+    req.session.user = {}
+    return res.redirect('/');
   }
   catch (err) {
     return next(err);
