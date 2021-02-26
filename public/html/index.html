@@ -8,8 +8,9 @@
 {% block content %}
 
 {% if message %}
-<div class="alert alert-danger text-center" role="alert">
-    {{message}}
+<div class="alert alert-danger alert-dismissible fade show text-center p-0" role="alert">
+    <button type="button" class="btn-close btn-sm mt-2 p-1" data-bs-dismiss="alert" aria-label="Close"></button>
+    <p class="mt-2">{{message}}</p>
 </div>
 {% endif %}
 
