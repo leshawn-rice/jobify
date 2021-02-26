@@ -30,4 +30,4 @@ class UnauthorizedError extends ExpressError {
   }
 }
 
-module.exports = { NotFoundError, InternalServerError, BadRequestError };
+module.exports = { NotFoundError, InternalServerError, BadRequestError, UnauthorizedError };

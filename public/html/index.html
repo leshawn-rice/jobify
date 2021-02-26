@@ -7,7 +7,15 @@
 
 {% block content %}
 
+{% if message %}
+<div class="alert alert-danger text-center" role="alert">
+    {{message}}
+</div>
+{% endif %}
+
 <div class="container d-flex justify-content-center">
+
+
     <div id="carousel-thang" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">

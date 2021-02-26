@@ -15,6 +15,7 @@ const { checkSession } = require("./middleware/auth");
 
 // Routes
 const indexRoutes = require('./routes/index');
+const jobRoutes = require('./routes/jobs');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(checkSession);
 
 app.use('/', indexRoutes);
+app.use('/jobs', jobRoutes);
 
 app.use(express.static('public'));
 

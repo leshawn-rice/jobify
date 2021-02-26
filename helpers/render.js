@@ -9,8 +9,9 @@
  * current user to the template
  */
 
-function render(req, res, path) {
-  return res.render(path, { user: req.session.user });
+function render(req, res, path, templateVars) {
+  const variables = { ...templateVars, user: req.session.user }
+  return res.render(path, variables);
 }
 
 module.exports = render;

@@ -25,10 +25,10 @@ function checkSession(req, res, next) {
 
 function ensureLoggedIn(req, res, next) {
   try {
-    if (!res.locals.user) throw new UnauthorizedError();
+    if (!req.session.user.username) throw new UnauthorizedError();
     return next();
   } catch (err) {
-    return next(err);
+    return res.redirect('/?unauth=true');
   }
 }
 

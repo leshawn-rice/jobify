@@ -10,6 +10,9 @@ const { ensureLoggedIn } = require('../middleware/auth');
 
 router.get('/', (req, res, next) => {
   try {
+    if (req.query.unauth) {
+      return render(req, res, 'index.html', { message: 'You must be logged in to do that!' });
+    }
     return render(req, res, 'index.html');
   }
   catch (err) {
