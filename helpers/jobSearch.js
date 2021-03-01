@@ -3,7 +3,18 @@ const axios = require('axios');
 const jsdom = require('jsdom');
 const $ = require('jquery')(new jsdom.JSDOM().window);
 
-function parseJobCard(card) {
+async function findDescription(link) {
+  const res = await axios.get(link);
+
+  const page = $(res.data);
+
+  const raw = page.find('div.show-more-less-html__markup.show-more-less-html__markup--clamp-after-5');
+
+  const description = raw.text().trim();
+  return description;
+}
+
+async function parseJobCard(card) {
 
   // Need to get a description
 
@@ -12,20 +23,21 @@ function parseJobCard(card) {
   const location = card.find('span.job-result-card__location').text();
   const link = card.find('a.result-card__full-card-link').attr('href');
 
+  const description = await findDescription(link);
+
   return {
-    'title': title, 'company': company,
-    'location': location, 'link': link
+    title, company, location, link, description
   }
 }
 
-function parseHTML(response) {
+async function parseHTML(response) {
   const pageJobs = []
 
   const html = $(response.data);
   const jobCards = html.find('.result-card');
 
   for (let card of jobCards) {
-    const job = parseJobCard($(card));
+    const job = await parseJobCard($(card));
     pageJobs.push(job);
   }
   return pageJobs;
@@ -42,11 +54,13 @@ async function findJobs(term, city, stateCode, exp, numResults) {
     const url = `${BASE_URL}/?f_E=${exp}&keywords=${term}&location=${city} ${state} United States&start=${start}`
     const response = await axios.get(url);
 
-    jobs.push(...parseHTML(response));
+    const pageOfJobs = await parseHTML(response);
+
+    jobs.push(...pageOfJobs);
 
     start += 25;
   }
-  console.log(jobs);
+  return jobs
 }
 
 module.exports = findJobs;

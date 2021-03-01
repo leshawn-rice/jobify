@@ -36,9 +36,9 @@ router.post('/find', ensureLoggedIn, async (req, res, next) => {
     const { searchTerm, city, state, expLevel, maxResults } = req.body;
 
 
-    await findJobs(searchTerm, city, state, expLevel, maxResults);
+    const jobs = await findJobs(searchTerm, city, state, expLevel, maxResults);
 
-    return res.send('Nice!');
+    return render(req, res, 'show-jobs.html', { jobs });
   }
   catch (err) {
     return next(err);
