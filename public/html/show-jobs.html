@@ -15,22 +15,26 @@
         <h1 class="display-4 text-center">Jobs</h1>
     </div>
     {% for job in jobs %}
-    <div class="col-6 col-md-4 scroll my-3">
+    <div class="col-12 col-lg-4 my-3">
         <div class="card bg-dark text-light">
             <div class="card-header bg-secondary">
-                <div class="row justify-content-around">
-                    <div class="col-8">{{job['title']}}</div>
-                    <div class="col-4">
+                <div class="row justify-content-between">
+                    <div class="col-9 d-flex justify-content-start ms-0 p-0">
+                        {{job['title']}}
+                    </div>
+                    <div class="col-3 d-flex justify-content-end me-0 p-0">
                         <button class="btn btn-sm btn-primary">Save Job</button>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body scroll">
                 <h5 class="card-title">{{job['company']}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted"> {{job['location']}} </h6>
-                <p class="card-text"> {{job['description']}} </p>
+                {% for description_text in job['description'] %}
+                <p class="card-text">{{description_text}}</p>
+                {% endfor %}
             </div>
-            <div class="card-footer text-center">
+            <div class="card-footer text-center bg-secondary">
                 <a href="{{job['link']}}" class="btn btn-outline-light btn-sm" target="_blank">Go to Page!</a>
             </div>
         </div>
