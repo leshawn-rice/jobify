@@ -4,9 +4,11 @@ const router = new express.Router();
 
 // Internal Dependencies
 const render = require('../helpers/render');
+const User = require('../models/user');
 
 // Middleware
 const { ensureLoggedIn } = require('../middleware/auth');
+const { BadRequestError, UnauthorizedError } = require('../expressErrors');
 
 router.get('/', (req, res, next) => {
   try {
@@ -32,13 +34,17 @@ router.get('/login', (req, res, next) => {
   }
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    req.session.user.username = username;
+    const user = await User.authenticate(username, password);
+    req.session.user = user;
     return res.redirect('/');
   }
   catch (err) {
+    if (err instanceof UnauthorizedError) {
+      return render(req, res, 'login.html', { invalidLogin: true })
+    }
     return next(err);
   }
 });
@@ -55,13 +61,21 @@ router.get('/signup', (req, res, next) => {
   }
 });
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    req.session.user.username = username;
+    const user = await User.register(req.body);
+    req.session.user = user;
     return res.redirect('/');
   }
   catch (err) {
+    if (err instanceof BadRequestError) {
+      if (err.message === 'Passwords do not match!') {
+        return render(req, res, 'signup.html', { passwordMismatch: true, usernameFill: req.body.username })
+      }
+      if (err.message === `Duplicate username: ${req.body.username}`) {
+        return render(req, res, 'signup.html', { usernameExists: true })
+      }
+    }
     return next(err);
   }
 });
