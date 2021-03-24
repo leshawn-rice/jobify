@@ -1,0 +1,20 @@
+.Paginator {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.Paginator button {
+  margin: 0 1rem;
+  background: none;
+  color: rgb(85, 77, 77);
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.Paginator button.active {
+  color: rgb(0, 0, 0);
+}

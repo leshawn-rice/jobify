@@ -1,0 +1,41 @@
+.Search {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Search form {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-self: center;
+  background-color: rgb(233,233,233);
+  /* width: fit-content; */
+  width: 50%;
+  height: fit-content;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  border-radius: 1rem;
+}
+
+.Search h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+.Search-Btn {
+  display: flex;
+  align-self: center;
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: center;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(233,233,233);
+  border: none;
+  font-size: 2rem;
+}

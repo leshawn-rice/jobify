@@ -1,0 +1,32 @@
+.Profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.Profile-Item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.Profile-Text {
+  font-weight: 600;
+  font-size: 1.5rem;
+  justify-self: flex-end;
+}
+
+.Profile-Btn {
+  justify-self: center;
+  align-self: center;
+  width: 10rem;
+  height: 5rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: rgb(173, 173, 173);
+  box-shadow: 3px 3px 3px rgb(173, 173, 173);
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  outline: none;
+}

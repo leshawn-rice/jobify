@@ -1,0 +1,45 @@
+.Alert {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 1rem;
+  transition: opacity 1s;
+}
+
+.Alert p {
+  margin: 1rem;
+}
+
+.Alert.Error {
+  background-color: rgba(241, 50, 50, 0.74);
+}
+
+.Alert.Warning {
+  background-color: rgba(222, 241, 50, 0.74);
+}
+
+.Alert.Success {
+  background-color: rgba(94, 241, 50, 0.74);
+}
+
+.Alert-Close {
+  background: none;
+  width: 4rem;
+  height: 4rem;
+  color: black;
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.Alert-Close:hover {
+  color: rgba(49, 49, 49, 0.774);
+  cursor: pointer;
+}

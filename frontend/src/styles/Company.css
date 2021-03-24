@@ -1,0 +1,11 @@
+.Company {
+  width: 100%;
+}
+
+.Company h1 {
+  font-size: 2.5rem;
+}
+
+.Company p {
+  font-size: 1.5rem;
+}

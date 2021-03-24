@@ -1,0 +1,40 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+}
+
+.Form form {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  background-color: white;
+  width: 50rem;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 3px rgb(173, 173, 173);
+}
+
+.Form h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+.Form-Submit {
+  background-color: rgb(173, 173, 173);;
+  align-self: flex-end;
+  font-size: 1.75rem;
+  font-weight: 700;
+  min-width: 8rem;
+  width: fit-content;
+  min-height: 4rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgb(233, 233, 233);
+  cursor: pointer;
+  color: white;
+}
+

@@ -1,0 +1,45 @@
+.Job {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  background-color: white;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 3px rgb(173, 173, 173);
+  margin: 2rem 0;
+  padding: 2rem;
+}
+
+.Job h1 {
+  font-size: 2rem;
+}
+
+.Job p {
+  font-size: 1.5rem;
+}
+
+.Job-Apply {
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(255, 81, 0);
+  border-radius: 1rem;
+  box-shadow: 3px 3px 3px rgb(173, 173, 173);
+  width: 8rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.Job-Apply:disabled {
+  background-color: rgba(255, 121, 59, 0.863);
+  cursor: auto;
+}
