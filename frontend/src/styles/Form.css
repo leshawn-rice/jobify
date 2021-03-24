@@ -1,6 +1,7 @@
 .Form {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
 .Form form {
@@ -9,7 +10,7 @@
   justify-self: center;
   align-self: center;
   background-color: white;
-  width: 50rem;
+  width: 100%;
   height: fit-content;
   justify-content: center;
   align-items: center;
@@ -36,5 +37,23 @@
   border: 1px solid rgb(233, 233, 233);
   cursor: pointer;
   color: white;
+}
+
+@media only screen and (max-width: 300px) {
+  .Form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .Form {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .Form {
+    width: 60%;
+  }
 }
 
