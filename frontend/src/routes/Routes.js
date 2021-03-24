@@ -1,8 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
-import Companies from './Companies';
-import Company from './Company';
 import Jobs from './Jobs';
 import Login from './Login';
 import Signup from './Signup';

@@ -1,40 +1,29 @@
+"use strict";
+
 /** Express app for jobly. */
 
-// External Dependencies
 const express = require("express");
 const cors = require("cors");
-const favicon = require('serve-favicon');
-const session = require('express-session');
 
-// Internal Dependencies
-const { SECRET_KEY } = require('./config');
+const { NotFoundError } = require("./expressError");
 
-// Middleware & Errors
-const { NotFoundError } = require("./expressErrors");
-const { checkSession } = require("./middleware/auth");
+const { authenticateJWT } = require("./middleware/auth");
+const authRoutes = require("./routes/auth");
+const usersRoutes = require("./routes/users");
+const jobsRoutes = require("./routes/jobs");
 
-// Routes
-const indexRoutes = require('./routes/index');
-const jobRoutes = require('./routes/jobs');
+const morgan = require("morgan");
 
 const app = express();
 
 app.use(cors());
-app.use(session({
-  secret: SECRET_KEY,
-  resave: true,
-  saveUninitialized: true,
-  cookie: { secure: false }
-}));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(favicon(__dirname + '/public/img/favicon.ico'));
-app.use(checkSession);
+app.use(morgan("tiny"));
+app.use(authenticateJWT);
 
-app.use('/', indexRoutes);
-app.use('/jobs', jobRoutes);
-
-app.use(express.static('public'));
+app.use("/auth", authRoutes);
+app.use("/users", usersRoutes);
+app.use("/jobs", jobsRoutes);
 
 
 /** Handle 404 errors -- this matches everything */

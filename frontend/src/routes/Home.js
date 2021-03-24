@@ -10,7 +10,7 @@ const Home = () => {
     return (
       <div className="Home">
         <h1>Jobify</h1>
-        <p>All the jobs in one, convenient place</p>
+        <p>Search for jobs in one, convenient place</p>
         <div className="Home-Nav">
           <button className="Home-Btn"><Link to="/login">Log in</Link></button>
           <button className="Home-Btn"><Link to="/signup">Sign up</Link></button>
@@ -22,7 +22,7 @@ const Home = () => {
     return (
       <div className="Home">
         <h1>Jobly</h1>
-        <p>All the jobs in one, convenient place</p>
+        <p>Search for jobs in one, convenient place</p>
         <div className="Home-Nav">
           <h2>Welcome Back, {user.firstName}</h2>
         </div>
