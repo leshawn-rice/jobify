@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
       <div className="Navbar">
         <div className="Navbar-Left">
-          <NavLink className="Navbar-Link" id="Navbar-Home" exact to="/" >Jobly</NavLink>
+          <NavLink className="Navbar-Link" id="Navbar-Home" exact to="/" >Jobify</NavLink>
         </div>
         <div className="Navbar-Right">
           <NavLink className="Navbar-Link" exact to="/jobs" >Jobs</NavLink>
@@ -25,7 +25,7 @@ const Navbar = () => {
     return (
       <div className="Navbar">
         <div className="Navbar-Left">
-          <NavLink className="Navbar-Link" id="Navbar-Home" exact to="/" >Jobly</NavLink>
+          <NavLink className="Navbar-Link" id="Navbar-Home" exact to="/" >Jobify</NavLink>
         </div>
         <div className="Navbar-Right">
           <NavLink className="Navbar-Link" exact to="/login" >Login</NavLink>

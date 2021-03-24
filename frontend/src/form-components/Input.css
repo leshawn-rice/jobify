@@ -33,3 +33,18 @@
 .Input:focus {
   border: none;
 }
+
+.Password {
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+
+.Password input {
+  margin-right: 1rem;
+}
+
+.Password span {
+  cursor: pointer;
+  color: rgb(173, 173, 173);
+}
